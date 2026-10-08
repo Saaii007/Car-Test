@@ -1,0 +1,266 @@
+================================================================================
+AUTOVALLUATE INDIA — LOCAL SETUP & USER INSTRUCTIONS
+Indian Pre-Owned Car Valuation Platform
+================================================================================
+
+TABLE OF CONTENTS
+--------------------------------------------------------------------------------
+1. Prerequisites & System Requirements
+2. Step-by-Step Installation & Run Guide (Download & Run Locally)
+3. Environment Configuration (.env)
+4. Available Scripts & Commands
+5. Application Features & Quick-Start Walkthrough
+   - 45+ Comprehensive Indian Car Models (Kia Carens, Swift, Carnival, Wagon R, etc.)
+   - Unconstrained Kilometers Driven Input
+   - Integrated Exterior Damage & Paint Maintenance Analyzer
+   - Final Estimate Subtext (+/- Value for Exterior Maintenance)
+   - AI Photo Analyzer & Smart Vision Classifier
+   - Natural Language Entity Parser
+6. Architecture & Local Services
+7. Troubleshooting & Common Issues
+
+
+================================================================================
+1. PREREQUISITES & SYSTEM REQUIREMENTS
+================================================================================
+Before running the software, ensure you have the following installed on your
+local machine:
+
+- Node.js: Version 18.x or 20.x (Recommended: v20.x LTS)
+  Check version: node -v
+  Download: https://nodejs.org/
+
+- Package Manager: npm (v9+ or v10+) or pnpm / yarn
+  Check version: npm -v
+
+- Git: (Optional, if cloning from a git repository)
+  Check version: git -v
+
+- Modern Web Browser: Google Chrome, Mozilla Firefox, Microsoft Edge, or Safari
+
+
+================================================================================
+2. STEP-BY-STEP INSTALLATION & RUN GUIDE
+================================================================================
+
+STEP 1: Extract or Clone the Codebase
+--------------------------------------------------------------------------------
+If you downloaded a ZIP archive:
+  Extract the ZIP archive to a folder of your choice (e.g. ~/projects/autovaluate-india).
+
+If cloning via Git:
+  git clone <repository-url> autovaluate-india
+  cd autovaluate-india
+
+STEP 2: Open Terminal in Project Directory
+--------------------------------------------------------------------------------
+Open your terminal (macOS/Linux) or PowerShell / Command Prompt (Windows)
+and navigate into the root project directory:
+  cd autovaluate-india
+
+Verify you see package.json and server.ts:
+  ls -la     (macOS/Linux)
+  dir        (Windows)
+
+STEP 3: Install Node.js Dependencies
+--------------------------------------------------------------------------------
+Run the following command to install all frontend and backend dependencies:
+  npm install
+
+This installs Express, Vite, React 19, Tailwind CSS v4, Lucide React,
+Motion, TSX, and the Google GenAI SDK.
+
+STEP 4: Set Up Environment Variables (Optional)
+--------------------------------------------------------------------------------
+Copy the sample environment file to create your local .env file:
+  cp .env.example .env    (macOS/Linux)
+  copy .env.example .env  (Windows)
+
+Open `.env` in any text editor and optionally add your Gemini API key:
+  GEMINI_API_KEY="your_api_key_here"
+
+*NOTE: The platform includes a complete deterministic Indian automotive rule
+engine, local entity extractor, and smart vision classifier. The application
+will function fully offline and keyless! If provided, Gemini 3.8 Flash will
+enhance custom photo analysis and zero-shot NLP parsing.*
+
+STEP 5: Launch the Application
+--------------------------------------------------------------------------------
+Start the full-stack development server:
+  npm run dev
+
+The output will display:
+  AutoValuate India server running on http://0.0.0.0:3000
+  Vite ready in ... ms
+
+STEP 6: Open in Your Browser
+--------------------------------------------------------------------------------
+Open your browser and navigate to:
+  http://localhost:3000
+
+The AutoValuate India dashboard will load immediately.
+
+
+================================================================================
+3. ENVIRONMENT CONFIGURATION (.env)
+================================================================================
+The following variables can be configured in your `.env` file:
+
+- PORT:
+    Port number the server listens on (default: 3000).
+    Example: PORT=3000
+
+- GEMINI_API_KEY:
+    (Optional) Google Gemini API key used by server-side endpoints for
+    multi-modal Vision classification and conversational NLP parsing.
+    Get a key from: https://aistudio.google.com/app/apikey
+
+- APP_URL:
+    (Optional) Base URL where the app is hosted (default: http://localhost:3000).
+
+
+================================================================================
+4. AVAILABLE SCRIPTS & COMMANDS
+================================================================================
+Run these commands from the root directory:
+
+- npm run dev
+    Starts the full-stack server using TSX (`tsx server.ts`) which boots
+    Express and attaches Vite's dev server middleware. Fast reload enabled.
+
+- npm run build
+    Compiles the TypeScript code and bundles the frontend production assets
+    into the `dist/` folder using Vite.
+
+- npm start
+    Runs the production server (`tsx server.ts`).
+
+- npm run lint
+    Runs TypeScript type-checking (`tsc --noEmit`) to verify zero syntax or
+    typing discrepancies across the codebase.
+
+- npm run clean
+    Cleans up the build cache and `dist/` directory.
+
+
+================================================================================
+5. APPLICATION FEATURES & QUICK-START WALKTHROUGH
+================================================================================
+
+1. Extensive Indian Car Catalogue (45+ Models):
+   - Supports all major OEMs: Kia, Maruti Suzuki, Hyundai, Tata, Mahindra,
+     Toyota, Honda, Volkswagen, Skoda, MG, Jeep, Nissan, Renault.
+   - Popular models include:
+     * Kia: Carens, Carnival, Seltos, Sonet, EV6
+     * Maruti Suzuki: Swift, Wagon R, Dzire, Baleno, Brezza, Ertiga, Grand Vitara,
+       Fronx, Alto K10, Jimny, Ciaz
+     * Hyundai: Creta, Venue, i20, Verna, Alcazar, Grand i10 Nios, Aura
+     * Tata: Nexon, Punch, Harrier, Safari, Altroz, Tiago
+     * Mahindra: XUV700, Thar, Scorpio-N, XUV 3XO
+     * Toyota: Innova Crysta, Innova Hycross, Fortuner, Urban Cruiser Hyryder
+     * Honda: City, Amaze, Elevate
+     * Volkswagen: Taigun, Virtus, Polo
+     * Skoda: Kushaq, Slavia
+     * MG: Hector, ZS EV
+     * Jeep: Compass; Nissan: Magnite; Renault: Kwid
+
+2. Unconstrained Kilometers Driven:
+   - Enter any odometer reading directly without artificial limits or sliders.
+   - The algorithmic depreciation engine smoothly computes linear and
+     wear-based impacts whether the car has 5,000 km or 300,000+ km.
+
+3. Integrated Exterior Damage & Paint Maintenance Analyzer:
+   - Integrated across all 3 ingestion modes:
+     * Manual Form: Dedicated "Exterior Damage & Paint Maintenance Inspector"
+       with 5 severity levels (None / Showroom Pristine, Minor, Moderate,
+       Severe, Critical), multi-panel selector (Front/Rear Bumper, Bonnet,
+       Doors, Roof, Tailgate, Quarter Panels), scratch depth (Surface Swirls,
+       Clearcoat Cut, Deep to Primer), and repainted panels counter.
+     * AI Photo Analyzer: Computer vision inspects clearcoat depth, scratches,
+       and panel dents, auto-filling the damage analysis into the formula.
+     * Natural Language Parser: Understands phrases like "showroom condition",
+       "scratchless", "minor scratches on bumper", "dent on left door", etc.
+   - Mathematical Impact:
+     * Excellent exterior maintenance adds a bonus (+ ₹12,000 to + ₹16,000).
+     * Panel damages and repaints deduct appropriate repair costs (- ₹8,500 to
+       - ₹95,000), reducing the car's final value.
+
+4. Prominent +/- Exterior Maintenance Subtext Below Final Estimate:
+   - Directly underneath the main fair market price, a prominent badge/subtext
+     shows the exact +/- impact:
+     * Example (Excellent): "(+ ₹12,000 for excellent exterior condition)"
+     * Example (Damaged): "(- ₹22,000 for moderate exterior damage: Left Front Door)"
+
+5. AI Photo Analyzer (Visual Auto-Fill):
+   - Fast client-side canvas compression allows any photo (.jpg, .png, .webp)
+     to be processed in milliseconds without payload limits.
+   - Analyzes real visual features without defaulting to Hyundai Creta.
+   - Includes 8 pre-analyzed Indian car presets:
+     1) 2018 Hyundai Creta 1.6 SX
+     2) 2022 Kia Carens Luxury Plus AT (+ ₹14,500 showroom condition)
+     3) 2021 Maruti Suzuki Swift ZXi+ (- ₹11,500 minor bumper scratches)
+     4) 2021 Kia Carnival Limousine AT (+ ₹18,000 mint condition)
+     5) 2020 Maruti Suzuki Wagon R 1.2 ZXi (- ₹22,000 moderate door dent)
+     6) 2023 Tata Nexon Fearless+ DCA
+     7) 2022 Mahindra XUV700 AX7L Diesel AT
+     8) 2020 Honda City 5th Gen ZX CVT
+   - Includes a quick model matcher selector on the detection card allowing
+     immediate 1-click confirmation or override.
+
+6. Natural Language Parser (Free-Text Auto-Fill):
+   - Type or paste an ad description like:
+     "Selling my 2022 Kia Carens Luxury Plus diesel automatic in Hyderabad TS-09, done 36,000 km, single owner with zero-dep insurance and excellent showroom condition without any scratches"
+   - Auto-extracts Make, Model, Generation, Variant, Year, Fuel, Transmission,
+     unconstrained KM, Location, Owners, Insurance, and Damage Status.
+
+7. Valuation Output Card & SHAP Feature Attribution:
+   - Displays Instant Buyout (Cars24/Spinny) vs Direct Peer-to-Peer Market bands.
+   - Shows Market Liquidity, Resale Demand index, and Days to Sell.
+   - Explains mathematical additions/subtractions in the SHAP attribution waterfall.
+
+8. In-Depth Analysis Modal & Compare Rivals:
+   - Interactive 5-year depreciation chart with NGT, BS6, and E20 regulatory milestones.
+   - 5-Year Total Cost of Ownership (TCO) breakdown.
+   - Component Failure Risk Matrix (DQ200 DSG, DCT clutch wear, DPF soot).
+   - Inter-state resale arbitrage (selling in KA/KL vs DL-NCR).
+   - Side-by-side rival comparison matrix.
+
+
+================================================================================
+6. ARCHITECTURE & LOCAL SERVICES
+================================================================================
+- Frontend: React 19 + TypeScript + Tailwind CSS v4 + Motion + Lucide React
+- Backend: Express (Node.js) running via TSX on port 3000
+- Valuation Model: Algorithmic valuation engine calibrated on secondary transactions
+  (exponential age retention, RTO tax multipliers, SHAP value feature vector)
+- Vision & NLP:
+  * Primary: Google GenAI SDK (`@google/genai` with `gemini-3.8-flash`)
+  * Local Fallback: Smart vehicle classifier, perceptual image extractor,
+    and rule-based NLP entity parser
+- Storage / Catalogs: Local TypeScript catalogs in `src/data/` for vehicles,
+  generations, specs, failure risks, and RTO tax tables.
+
+
+================================================================================
+7. TROUBLESHOOTING & COMMON ISSUES
+================================================================================
+
+Issue: Port 3000 already in use
+Solution:
+  If another process is using port 3000, specify a different port:
+  PORT=3001 npm run dev
+  Then open http://localhost:3001 in your browser.
+
+Issue: `node_modules` not found or command not found: tsx
+Solution:
+  Ensure you ran `npm install` inside the project root before running `npm run dev`.
+
+Issue: Node version incompatibility
+Solution:
+  Make sure you are using Node.js v18 or v20+. Check with `node -v`.
+  Use nvm (Node Version Manager) if needed:
+  nvm use 20
+
+================================================================================
+Enjoy using AutoValuate India!
+================================================================================

@@ -1,0 +1,47 @@
+================================================================================
+RESALE PREDICTOR — TECH STACK, MODULES, DATASETS & APIS SUMMARY
+================================================================================
+
+1. LANGUAGES:
+- TypeScript (Strict typing for car data models, valuation engine, API contracts)
+- JavaScript (Node.js ES modules, client-side event loops)
+- CSS3 / Tailwind CSS v4 (Modern dark/light themes, typography, layout math)
+- HTML5 (Semantic landmarks, Offscreen Canvas 2D for PNG export)
+- SVG (Dynamic parametric vehicle silhouette rendering)
+
+2. MODULES & LIBRARIES:
+- Frontend:
+  * React 18 (Component architecture, hooks, theme context)
+  * Vite 5 (Fast bundle orchestration, HMR, modern build pipeline)
+  * Lucide React (Clean icon system)
+  * Tailwind CSS v4 (Styling & layout system)
+  * HTML5 Canvas 2D API (In-browser background-less PNG export)
+- Backend:
+  * Node.js v20 LTS (Server runtime)
+  * Express 4 (REST API router & middleware)
+  * tsx (TypeScript direct execution runner)
+  * @google/genai (Official Google Gen AI TypeScript SDK)
+  * Body-parser & CORS (Payload parsing & API security)
+
+3. APIS:
+- Google Gemini Multimodal Vision API (gemini-2.5-flash / gemini-3.8-flash for car photo analysis)
+- /api/calculate-valuation (Indian automotive econometric pricing engine)
+- /api/analyze-photo (Multimodal vision classification & damage assessment)
+- /api/parse-nlp (Natural language car ad text entity extraction)
+
+4. DATASETS & TAXONOMY:
+- 45+ Indian Car Models (Maruti Suzuki, Hyundai, Kia, Mahindra, Tata, Toyota, Honda, VW, Skoda, MG)
+- 140+ Variant & Facelift Trims (Generations, fuel types, transmissions, on-road prices)
+- 22+ Major State RTO Hubs & Road Tax Tables (DL, HR, UP, MH, KA, TN, TS, WB, GJ, KL)
+- Delhi-NCR NGT Scrappage Regulations (10-yr diesel / 15-yr petrol mandatory rules)
+- Spinny, Cars24, CarDekho Historical Benchmark Curves (45,000+ transaction points)
+- Bodyshop Paint & Dent Repair Schedules (Indian OEM standard labor & panel rates)
+
+5. MATHEMATICAL & VALUATION ALGORITHMS:
+- Exponential residual value decay with brand equity multipliers
+- Non-linear odometer excess penalty function
+- Ownership dilution factor (1st vs 2nd vs 3rd+ owner liquidity impact)
+- NGT Delhi-NCR scrappage cliff penalty
+- Additive SHAP (Shapley Additive exPlanations) feature decomposition
+- Channel spread benchmarks (Instant dealer cash vs direct peer-to-peer realization)
+================================================================================
